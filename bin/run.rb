@@ -59,31 +59,46 @@ loop do
 
     # YOUR CODE GOES BELOW HERE
 
-    USERS = [ {:first_name => "Jared",      last_name => "Powers",    age => "25"},
-              {:first_name => "Jose",       last_name => "Alvares",   age => "28"},
-              {:first_name => "Jeff",       last_name => "Green",     age => "29"},
-              {:first_name => "Curt",       last_name => "Schilling", age => "33"},
-              {:first_name => "Dave",       last_name => "Harris",    age => "17"},
-              {:first_name => "Hugh",       last_name => "Jackson",   age => "55"},
-              {:first_name => "Encinio",    last_name => "Varela",    age => "73"},
-              {:first_name => "Daniel",     last_name => "Vargas",    age => "22"},
-              {:first_name => "Sebastian",  last_name => "Vargas",    age => "27"},
-              {:first_name => "Nathan",     last_name => "Price",     age => "29"},
-              {:first_name => "Tyson",      last_name => "Chandler",  age => "21"},
-              {:first_name => "Jared",      last_name => "Allen",     age => "23"},
-              {:first_name => "Anita",      last_name => "Hebert",    age => "25"},
-              {:first_name => "Josh",       last_name => "Smith",     age => "27"},
-              {:first_name => "Walter",     last_name => "Sandino",   age => "34"},
-              {:first_name => "Bear",       last_name => "Prince",    age => "23"},
-              {:first_name => "Peter",      last_name => "Samson",    age => "26"},
-              {:first_name => "Tom",        last_name => "Brady",     age => "44"},
-              {:first_name => "John",       last_name => "Doe",       age => "33"},
-              {:first_name => "Shelly",     last_name => "Smith",     age => "19"},
+    USERS = [ {:first_name => "Jared",      :last_name => "Powers",    :age => "25"},
+              {:first_name => "Jose",       :last_name => "Alvares",   :age => "28"},
+              {:first_name => "Jeff",       :last_name => "Green",     :age => "29"},
+              {:first_name => "Curt",       :last_name => "Schilling", :age => "33"},
+              {:first_name => "Dave",       :last_name => "Harris",    :age => "17"},
+              {:first_name => "Hugh",       :last_name => "Jackson",   :age => "55"},
+              {:first_name => "Encinio",    :last_name => "Varela",    :age => "73"},
+              {:first_name => "Daniel",     :last_name => "Vargas",    :age => "22"},
+              {:first_name => "Sebastian",  :last_name => "Vargas",    :age => "27"},
+              {:first_name => "Nathan",     :last_name => "Price",     :age => "29"},
+              {:first_name => "Tyson",      :last_name => "Chandler",  :age => "21"},
+              {:first_name => "Jared",      :last_name => "Allen",     :age => "23"},
+              {:first_name => "Anita",      :last_name => "Hebert",    :age => "25"},
+              {:first_name => "Josh",       :last_name => "Smith",     :age => "27"},
+              {:first_name => "Walter",     :last_name => "Sandino",   :age => "34"},
+              {:first_name => "Bear",       :last_name => "Prince",    :age => "23"},
+              {:first_name => "Peter",      :last_name => "Samson",    :age => "26"},
+              {:first_name => "Tom",        :last_name => "Brady",     :age => "44"},
+              {:first_name => "John",       :last_name => "Doe",       :age => "33"},
+              {:first_name => "Shelly",     :last_name => "Smith",     :age => "19"},
     ]
 
-    get_array_position
+    if @params[:id] == nil
+      USERS.each do |hash|
+        puts "HTTP/1.1 200"
+        puts hash.values.join(" ")
+      end
+    elsif @params[:id].to_i > USERS.length
+      puts "HTTP/1.1 404"
+      puts "Name not found"
+    elsif id = @params[:id].to_i-1
+      puts "HTTP/1.1 200"
+      puts USERS[id].values.join(" ")
+    else
+      puts "Not a valid HTTP address"
+    end
 
-    puts @request.inspect
+
+
+    # puts @request.inspect
     # YOUR CODE GOES ABOVE HERE  ^
   end
 end
