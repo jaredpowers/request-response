@@ -92,8 +92,8 @@ loop do
     elsif id = @params[:id].to_i-1
       puts "HTTP/1.1 200"
       puts USERS[id].values.join(" ")
-    else
-      puts "Not a valid HTTP address"
+    # else
+    #   puts "Not a valid HTTP address"
     end
 
 
